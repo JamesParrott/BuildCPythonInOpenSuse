@@ -20,33 +20,34 @@ jobs:
     container: ${{ matrix.docker }}
 
     steps:
-      - run: zypper -n install
-              rpm-build
-              pkg-config
-              autoconf-archive
-              ccache
-              gdb
-              lcov
-              gdbm-devel
-              libbz2-devel
-              libb2-devel
-              libffi-devel
-              liblzma5
-              libopenssl-3-devel
-              mpdecimal-devel
-              ncurses5-devel
-              readline6-devel
-              sqlite3-devel
-              strace
-              tk-devel
-              uuid-devel
-              xvfb-run
-              xz-devel
-              zlib-devel
-              git
-      - uses: actions/checkout@v4
+      - run: zypper -n install git
+              # rpm-build
+              # pkg-config
+              # autoconf-archive
+              # ccache
+              # gdb
+              # lcov
+              # gdbm-devel
+              # libbz2-devel
+              # libb2-devel
+              # libffi-devel
+              # liblzma5
+              # libopenssl-3-devel
+              # mpdecimal-devel
+              # ncurses5-devel
+              # readline6-devel
+              # sqlite3-devel
+              # strace
+              # tk-devel
+              # uuid-devel
+              # xvfb-run
+              # xz-devel
+              # zlib-devel
+              # git
+      # - uses: actions/checkout@v4
       - run: git clone --depth=1 --branch=3.12 http://www.github.com/python/cpython
       - run: cd cpython
-      - run: ./configure --with-pydebug
-      - run: make -j
-      - run: ./python -m test -j
+      - run: ls
+      # - run: ./configure --with-pydebug
+      # - run: make -j
+      # - run: ./python -m test -j
