@@ -46,8 +46,8 @@ jobs:
               # git
       # - uses: actions/checkout@v4
       - run: git clone --depth=1 --branch=3.12 http://www.github.com/python/cpython
-      - run: cd cpython
+      - run: cd cpython/cpython
       - run: ls
-      # - run: ./configure --with-pydebug
-      # - run: make -j
-      # - run: ./python -m test -j
+      - run: ./configure --with-pydebug
+      - run: make -j
+      - run: ./python -m test -j
