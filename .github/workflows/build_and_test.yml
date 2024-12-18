@@ -1,0 +1,51 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+        - 'main'
+  pull_request:
+    branches:
+        - 'main'
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        docker: [opensuse/leap]
+
+    container: ${{ matrix.docker }}
+
+    steps:
+      - run: zypper -n install
+              rpm-build
+              pkg-config
+              autoconf-archive
+              ccache
+              gdb
+              lcov
+              gdbm-devel
+              libbz2-devel
+              libb2-devel
+              libffi-devel
+              liblzma5
+              libopenssl-3-devel
+              mpdecimal-devel
+              ncurses5-devel
+              readline6-devel
+              sqlite3-devel
+              strace
+              tk-devel
+              uuid-devel
+              xvfb-run
+              xz-devel
+              zlib-devel
+              git
+      # - uses: actions/checkout@v4
+      - run: git clone --depth=1 http://www.github.com/python/cpython
+      - run: ./configure --with-pydebug
+      - run: make -j
+      - run: ./python -m test -j
