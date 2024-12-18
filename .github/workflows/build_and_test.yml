@@ -44,8 +44,8 @@ jobs:
               xz-devel
               zlib-devel
               git
-      # - uses: actions/checkout@v4
-      - run: git clone --depth=1 http://www.github.com/python/cpython
+      - uses: actions/checkout@v4
+      - run: git clone --depth=1 --branch=3.12 http://www.github.com/python/cpython
       - run: cd cpython
       - run: ./configure --with-pydebug
       - run: make -j
