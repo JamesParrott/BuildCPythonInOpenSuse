@@ -3,10 +3,10 @@ name: Build and Test
 on:
   push:
     branches:
-        - 'main'
+        - 'opensuse_3.6'
   pull_request:
     branches:
-        - 'main'
+        - 'opensuse_3.6'
   workflow_dispatch:
 
 jobs:
